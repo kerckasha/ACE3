@@ -184,7 +184,7 @@ GVAR(lastHeartBeatSound) = ACE_time;
         _heartRate = 60 + 40 * _pain;
     };
     if (_heartRate <= 0) exitWith {};
-    _interval = 60 / (_heartRate min 40);
+    _interval = 360 / (_heartRate min 40);
 
     if ((ACE_player getVariable ["ACE_isUnconscious", false])) then {
         if (GVAR(painEffectType) == 1) then {

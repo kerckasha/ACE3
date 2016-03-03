@@ -52,6 +52,12 @@ if (_unit == ACE_player) then {
     };
 };
 
+if (([_unit, GVAR(remoteControlledAI)] call EFUNC(common,isPlayer))) then {
+	_unit setVariable ["ACE_medical_allowDamage", false, true];
+	[{
+        (_this select 0) setVariable ["ACE_medical_allowDamage", true, true];
+    }, [_unit], 5, 0] call EFUNC(common,waitAndExecute);
+};
 // if we have unconsciousness for AI disabled, we will kill the unit instead
 _isDead = false;
 if (!([_unit, GVAR(remoteControlledAI)] call EFUNC(common,isPlayer)) && !_force) then {
