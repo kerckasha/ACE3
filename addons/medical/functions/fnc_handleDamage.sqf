@@ -77,10 +77,6 @@ _minLethalDamage = if (_typeIndex >= 0) then {
     0.01
 };
 
-if (!isNull _shooter) then {
-    _unit setvariable [QGVAR(lastDamageSource), _shooter, false];
-};
-
 private _vehicle = vehicle _unit;
 private _effectiveSelectionName = _selection;
 if ((_vehicle != _unit) && {!(_vehicle isKindOf "StaticWeapon")} && {_shooter in [objNull, driver _vehicle, _vehicle]} && {_projectile == ""} && {_selection == ""}) then {
@@ -90,7 +86,7 @@ if ((_vehicle != _unit) && {!(_vehicle isKindOf "StaticWeapon")} && {_shooter in
 };
 
 if ((_minLethalDamage <= _newDamage) && {[_unit, [_effectiveSelectionName] call FUNC(selectionNameToNumber), _newDamage] call FUNC(determineIfFatal)}) then {
-    if ((_unit getVariable [QGVAR(preventInstaDeath), GVAR(preventInstaDeath)])) exitwith {
+    if ((_unit getVariable [QGVAR(preventInstaDeath), GVAR(preventInstaDeath)]) && ([_unit, GVAR(remoteControlledAI)] call EFUNC(common,isPlayer))) exitwith {
         _damageReturn = 0.9;
     };
     if ([_unit, false, true] call FUNC(setDead)) then {
@@ -102,10 +98,9 @@ if ((_minLethalDamage <= _newDamage) && {[_unit, [_effectiveSelectionName] call 
     _damageReturn = _damageReturn min 0.89;
 };
 
-
 [_unit] call FUNC(addToInjuredCollection);
 
-if (_unit getVariable [QGVAR(preventInstaDeath), GVAR(preventInstaDeath)]) exitWith {
+if ((_unit getVariable [QGVAR(preventInstaDeath), GVAR(preventInstaDeath)]) && ([_unit, GVAR(remoteControlledAI)] call EFUNC(common,isPlayer))) exitWith {
     private _delayedUnconsicous = false;
     if (_vehicle != _unit and {damage _vehicle >= 1}) then {
         [_unit] call EFUNC(common,unloadPerson);

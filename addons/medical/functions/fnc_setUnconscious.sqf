@@ -52,6 +52,13 @@ if (_unit == ACE_player) then {
     };
 };
 
+if (([_unit, GVAR(remoteControlledAI)] call EFUNC(common,isPlayer))) then {
+	_unit setVariable ["ACE_medical_allowDamage", false, true];
+	[{
+        (_this select 0) setVariable ["ACE_medical_allowDamage", true, true];
+    }, [_unit], 5, 0] call EFUNC(common,waitAndExecute);
+};
+
 // if we have unconsciousness for AI disabled, we will kill the unit instead
 _isDead = false;
 if (!([_unit, GVAR(remoteControlledAI)] call EFUNC(common,isPlayer)) && !_force) then {
@@ -94,18 +101,8 @@ _unit setUnitPos "DOWN";
 if (GVAR(moveUnitsFromGroupOnUnconscious)) then {
     [_unit, true, "ACE_isUnconscious", side group _unit] call EFUNC(common,switchToGroupSide);
 };
-// Delay Unconscious so the AI dont instant stop shooting on the unit #3121
-if (GVAR(delayUnconCaptive) == 0) then {
-    [_unit, "setCaptive", QGVAR(unconscious), true] call EFUNC(common,statusEffect_set);
-} else {
-    [{
-        params ["_unit"];
-        if (_unit getVariable ["ACE_isUnconscious", false]) then {
-            [_unit, "setCaptive", QGVAR(unconscious), true] call EFUNC(common,statusEffect_set);
-        };
-    },[_unit], GVAR(delayUnconCaptive)] call EFUNC(common,waitAndExecute);
-};
 
+[_unit, "setCaptive", QGVAR(unconscious), true] call EFUNC(common,statusEffect_set);
 _anim = [_unit] call EFUNC(common,getDeathAnim);
 [_unit, _anim, 1, true] call EFUNC(common,doAnimation);
 [{
