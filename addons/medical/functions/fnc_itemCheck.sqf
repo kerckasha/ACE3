@@ -26,6 +26,9 @@ while {({_x == "FirstAidKit"} count items _unit) > 0} do {
         _unit addItem "ACE_fieldDressing";
         _unit addItem "ACE_fieldDressing";
         _unit addItem "ACE_morphine";
+        _unit addItem "ACE_fieldDressing";
+        _unit addItem "ACE_fieldDressing";
+        _unit addItem "ACE_morphine";
     };
 };
 
@@ -46,5 +49,17 @@ while {({_x == "Medikit"} count items _unit) > 0} do {
         _unit addItemToBackpack "ACE_epinephrine";
         _unit addItemToBackpack "ACE_bloodIV";
         _unit addItemToBackpack "ACE_bloodIV";
+        _unit addItemToBackpack "ACE_epinephrine";
+        _unit addItemToBackpack "ACE_epinephrine";
+        _unit addItemToBackpack "ACE_epinephrine";
+        _unit addItemToBackpack "ACE_epinephrine";
+        _unit addItemToBackpack "ACE_bloodIV";
+        _unit addItemToBackpack "ACE_bloodIV";
+        _unit addItem "ACE_fieldDressing";
+        _unit addItem "ACE_fieldDressing";
+        _unit addItem "ACE_morphine";
+        _unit addItem "ACE_fieldDressing";
+        _unit addItem "ACE_fieldDressing";
+        _unit addItem "ACE_morphine";
     };
 };
