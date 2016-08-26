@@ -39,7 +39,7 @@ if (!(_unit getVariable [QGVAR(primed), false])) then {
     private _velocity = [_throwSpeed, _throwSpeed / THROWSTYLE_HIGH_VEL_COEF / 1.25] select (_throwType == "high");
     _velocity = [_velocity, THROWSTYLE_DROP_VEL] select _dropMode;
 
-    private _p2 = (eyePos _unit) vectorAdd (positionCameraToWorld _direction) vectorDiff (positionCameraToWorld [0, 0, 0]);
+    private _p2 = (eyePos _unit) vectorAdd (AGLToASL (positionCameraToWorld _direction)) vectorDiff (AGLToASL (positionCameraToWorld [0, 0, 0]));
     private _p1 = AGLtoASL (_activeThrowable modelToWorldVisual [0, 0, 0]);
 
     private _newVelocity = (_p1 vectorFromTo _p2) vectorMultiply _velocity;
@@ -67,6 +67,7 @@ if (!(_unit getVariable [QGVAR(primed), false])) then {
     _unit getVariable [QGVAR(dropMode), false]
 ], 0.3] call CBA_fnc_waitAndExecute;
 
+
 #ifdef DRAW_THROW_PATH
 GVAR(predictedPath) = call FUNC(drawArc); // save the current throw arc
 GVAR(flightPath) = [];
@@ -78,6 +79,7 @@ GVAR(flightPath) = [];
     };
 };
 #endif
+
 
 // Stop rendering arc and doing rendering magic while throw is happening
 [_unit, "Completed a throw fully"] call FUNC(exitThrowMode);

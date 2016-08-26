@@ -19,24 +19,32 @@ if (dialog || {!(ACE_player getVariable [QGVAR(inHand), false])} || {!([ACE_play
     [ACE_player, "In dialog or no throwable in hand or cannot prepare throwable"] call FUNC(exitThrowMode);
 };
 
-private _throwable = currentThrowable ACE_player;
-private _throwableMag = _throwable param [0, "#none"];
 private _primed = ACE_player getVariable [QGVAR(primed), false];
 private _activeThrowable = ACE_player getVariable [QGVAR(activeThrowable), objNull];
+
+// Exit if throwable died primed in hand
+if (isNull _activeThrowable && {_primed}) exitWith {
+    [ACE_player, "Throwable died primed in hand"] call FUNC(exitThrowMode);
+};
+
+private _throwable = currentThrowable ACE_player;
+
+// Inventory check
+if (_throwable isEqualTo [] && {!_primed}) exitWith {
+    [ACE_player, "No valid throwables"] call FUNC(exitThrowMode);
+};
+
+private _throwableMag = _throwable param [0, "#none"];
 
 // Get correct throw power for primed grenade
 if (_primed) then {
     private _ammoType = typeOf _activeThrowable;
     _throwableMag = GVAR(ammoMagLookup) getVariable _ammoType;
     if (isNil "_throwableMag") then {
-        // What we're trying to throw must not be a normal throwable because it is not in our lookup hash (e.g. 40mm smoke) 
-        // Just use HandGrenade as it has a average initSpeed value
+        // What we're trying to throw must not be a normal throwable because it is not in our lookup hash (e.g. 40mm smoke)
+        // Just use HandGrenade as it has an average initSpeed value
         _throwableMag = "HandGrenade";
     };
-};
-// Inventory check
-if (_throwable isEqualTo [] && {!_primed}) exitWith {
-    [ACE_player, "No valid throwables"] call FUNC(exitThrowMode);
 };
 
 // Some throwables have different classname for magazine and ammo
@@ -89,7 +97,7 @@ if (abs _leanCoef < 0.15 || {vehicle ACE_player != ACE_player} || {weaponLowered
     _leanCoef = 0;
 };
 
-private _posCameraWorld = positionCameraToWorld [0, 0, 0];
+private _posCameraWorld = AGLToASL (positionCameraToWorld [0, 0, 0]);
 _posHeadRel = _posHeadRel vectorAdd [-0.03, 0.01, 0.15]; // Bring closer to eyePos value
 private _posFin = AGLToASL (ACE_player modelToWorldVisual _posHeadRel);
 
@@ -103,10 +111,10 @@ private _pitch = [-30, -90] select (_throwType == "high");
 
 
 if (ACE_player getVariable [QGVAR(dropMode), false]) then {
-    _posFin = _posFin vectorAdd (positionCameraToWorld [_leanCoef, 0, ACE_player getVariable [QGVAR(dropDistance), DROP_DISTANCE_DEFAULT]]);
+    _posFin = _posFin vectorAdd (AGLToASL (positionCameraToWorld [_leanCoef, 0, ACE_player getVariable [QGVAR(dropDistance), DROP_DISTANCE_DEFAULT]]));
 
-    // Even vanilla throwables go through glass, only "GEOM" LOD will stop it but that will also stop it when there is glass in a window
-    if (lineIntersects [AGLtoASL _posCameraWorld, _posFin vectorDiff _posCameraWorld]) then {
+    // Even vanilla throwables go through glass, only "GEOM" LOD will stop it but that will also stop it when there is no glass in a window
+    if (lineIntersects [_posCameraWorld, _posFin vectorDiff _posCameraWorld]) then {
         ACE_player setVariable [QGVAR(dropDistance), ((ACE_player getVariable [QGVAR(dropDistance), DROP_DISTANCE_DEFAULT]) - 0.1) max DROP_DISTANCE_DEFAULT];
     };
 } else {
@@ -114,7 +122,7 @@ if (ACE_player getVariable [QGVAR(dropMode), false]) then {
     private _yAdjustBonus = [0, 0.1] select (_throwType == "high");
     private _cameraOffset = [_leanCoef, 0, 0.3] vectorAdd [-0.1, -0.15, -0.03] vectorAdd [_xAdjustBonus, _yAdjustBonus, 0];
 
-    _posFin = _posFin vectorAdd (positionCameraToWorld _cameraOffset);
+    _posFin = _posFin vectorAdd (AGLToASL (positionCameraToWorld _cameraOffset));
 
     if (vehicle ACE_player != ACE_player) then {
         // Counteract vehicle velocity including acceleration
