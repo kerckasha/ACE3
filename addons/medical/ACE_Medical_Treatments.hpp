@@ -66,8 +66,8 @@ class ACE_Medical_Actions {
             requiredMedic = 1;
             treatmentTime = 20;
             items[] = {"ACE_bloodIV"};
-            // callbackSuccess = QUOTE(DFUNC(treatmentBasic_bloodbag));
-            callbackSuccess = QUOTE(DFUNC(treatmentIV));
+            callbackSuccess = QUOTE(DFUNC(treatmentBasic_bloodbag));
+            //callbackSuccess = QUOTE(DFUNC(treatmentIV));
             animationCaller = "AinvPknlMstpSnonWnonDnon_medic1";
             litter[] = {};
         };
