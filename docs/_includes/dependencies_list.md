@@ -2,7 +2,11 @@
 `ace_ballistics`, `ace_weather`
 {% endif %}
 
-{% if include.component == "advancedthrowing" %}
+{% if include.component == "advanced_fatigue" %}
+`ace_common`
+{% endif %}
+
+{% if include.component == "advanced_throwing" %}
 `ace_common`, `ace_weaponselect`
 {% endif %}
 
@@ -40,6 +44,10 @@
 
 {% if include.component == "cargo" %}
 `ace_interaction`
+{% endif %}
+
+{% if include.component == "chemlights" %}
+`ace_common`
 {% endif %}
 
 {% if include.component == "common" %}
@@ -202,6 +210,10 @@
 `ace_interaction`, `ace_apl`
 {% endif %}
 
+{% if include.component == "medical_ai" %}
+`ace_medical`
+{% endif %}
+
 {% if include.component == "medical_menu" %}
 `ace_medical`
 {% endif %}
@@ -287,6 +299,10 @@
 {% endif %}
 
 {% if include.component == "realisticnames" %}
+`ace_common`
+{% endif %}
+
+{% if include.component == "realisticweights" %}
 `ace_common`
 {% endif %}
 
