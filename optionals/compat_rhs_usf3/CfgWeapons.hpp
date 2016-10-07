@@ -207,48 +207,13 @@ class CfgWeapons {
         ACE_ScopeAdjust_Horizontal[] = {-6, 6};
         ACE_ScopeAdjust_VerticalIncrement = 0.1;
         ACE_ScopeAdjust_HorizontalIncrement = 0.1;
-        class ItemInfo: InventoryOpticsItem_Base_F {
-            class OpticsModes {
-                class pso1_scope {
-                    discreteDistance[] = {100};
-                    discreteDistanceInitIndex = 0;
-                };
-            };
-        };
     };
     class rhsusf_acc_LEUPOLDMK4: rhsusf_acc_sniper_base {};
-    class rhsusf_acc_LEUPOLDMK4_2: rhsusf_acc_sniper_base {
-        class ItemInfo: InventoryOpticsItem_Base_F {
-            class OpticsModes {
-                class pso1_scope {
-                    discreteDistance[] = {100};
-                    discreteDistanceInitIndex = 0;
-                };
-            };
-        };
-    };
+    class rhsusf_acc_LEUPOLDMK4_2: rhsusf_acc_sniper_base {};
     class rhsusf_acc_LEUPOLDMK4_2_d : rhsusf_acc_LEUPOLDMK4_2 {};
-    class rhsusf_acc_premier: rhsusf_acc_LEUPOLDMK4_2 {
-        class ItemInfo: InventoryOpticsItem_Base_F {
-            class OpticsModes {
-                class pso1_scope {
-                    discreteDistance[] = {100};
-                    discreteDistanceInitIndex = 0;
-                };
-            };
-        };
-    };
+    class rhsusf_acc_premier: rhsusf_acc_LEUPOLDMK4_2 {};
     class rhsusf_acc_premier_low : rhsusf_acc_premier {};
-    class rhsusf_acc_premier_anpvs27: rhsusf_acc_premier {
-        class ItemInfo: InventoryOpticsItem_Base_F {
-            class OpticsModes {
-                class pso1_nvg {
-                    discreteDistance[] = {100};
-                    discreteDistanceInitIndex = 0;
-                };
-            };
-        };
-    };
+    class rhsusf_acc_premier_anpvs27: rhsusf_acc_premier {};
     // RHS lauchers
     class rhs_weap_fgm148: launch_O_Titan_F {
         ace_javelin_enabled = 1;
