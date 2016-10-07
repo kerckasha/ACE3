@@ -54,7 +54,7 @@ if (_unit == ACE_player) then {
     };
 };
 
-if (([_unit, GVAR(remoteControlledAI)] call EFUNC(common,isPlayer))) then {
+if ((_unit getVariable [QGVAR(preventInstaDeath), GVAR(preventInstaDeath)]) && ([_unit, GVAR(remoteControlledAI)] call EFUNC(common,isPlayer))) then {
 	_unit setVariable ["ACE_medical_allowDamage", false, true];
 	[{
         (_this select 0) setVariable ["ACE_medical_allowDamage", true, true];
