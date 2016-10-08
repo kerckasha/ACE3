@@ -128,6 +128,12 @@ class CfgVehicles {
                 typeName = "BOOL";
                 defaultValue = 0;
             };
+            class preventInstaDeathTime {
+                displayName = CSTRING(MedicalSettings_preventInstaDeathTime_DisplayName);
+                description = CSTRING(MedicalSettings_preventInstaDeathTime_Description);
+                typeName = "SCALAR";
+                defaultValue = 5;
+            };
             class bleedingCoefficient {
                 displayName = CSTRING(MedicalSettings_bleedingCoefficient_DisplayName);
                 description = CSTRING(MedicalSettings_bleedingCoefficient_Description);

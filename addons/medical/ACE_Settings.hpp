@@ -116,6 +116,13 @@ class ACE_Settings {
         typeName = "BOOL";
         value = 0;
     };
+    class GVAR(preventInstaDeathTime) {
+        category = CSTRING(Category_Medical);
+        displayName = CSTRING(MedicalSettings_preventInstaDeathTime_DisplayName);
+        description = CSTRING(MedicalSettings_preventInstaDeathTime_Description);
+        typeName = "SCALAR";
+        value = 5;
+    };
     class GVAR(enableRevive) {
         category = CSTRING(Category_Medical);
         displayName = CSTRING(ReviveSettings_enableRevive_DisplayName);
