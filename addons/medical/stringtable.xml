@@ -3135,6 +3135,12 @@
             <Hungarian>Egy egység kerüljön eszméletlen állapotba a halott helyett</Hungarian>
             <Italian>Imposta un'unità come incosciente invece di morta</Italian>
         </Key>
+        <Key ID="STR_ACE_Medical_MedicalSettings_preventInstaDeathTime_DisplayName">
+            <English>Invulnerability Period after falling Unconscious</English>
+        </Key>
+        <Key ID="STR_ACE_Medical_MedicalSettings_preventInstaDeathTime_Description">
+            <English>How long the invulnerability period lasts for when a unit falls unconscious.</English>
+        </Key>
         <Key ID="STR_ACE_Medical_MedicalSettings_bleedingCoefficient_DisplayName">
             <English>Bleeding coefficient</English>
             <Russian>Коэффициент кровопотери</Russian>
