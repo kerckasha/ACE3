@@ -58,7 +58,7 @@ if ((_unit getVariable [QGVAR(preventInstaDeath), GVAR(preventInstaDeath)]) && (
 	_unit setVariable ["ACE_medical_allowDamage", false, true];
 	[{
         (_this select 0) setVariable ["ACE_medical_allowDamage", true, true];
-    }, [_unit], _unit getVariable [QGVAR(preventInstaDeathTime), GVAR(preventInstaDeathTime)], 0] call EFUNC(common,waitAndExecute);
+    }, [_unit], _unit getVariable [QGVAR(preventInstaDeathTime), GVAR(preventInstaDeathTime)], 0] call CBA_fnc_waitAndExecute;
 };
 // if we have unconsciousness for AI disabled, we will kill the unit instead
 _isDead = false;
