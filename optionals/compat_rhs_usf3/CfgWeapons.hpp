@@ -143,56 +143,28 @@ class CfgWeapons {
         ACE_ScopeAdjust_Horizontal[] = {-6, 6};
         ACE_ScopeAdjust_VerticalIncrement = 0.1;
         ACE_ScopeAdjust_HorizontalIncrement = 0.1;
-        class ItemInfo: InventoryOpticsItem_Base_F {
-            class OpticsModes {
-                class pso1_scope {
-                    discreteDistance[] = {100};
-                    discreteDistanceInitIndex = 0;
-                };
-            };
-        };
+        
     };
     class rhsusf_acc_LEUPOLDMK4: rhsusf_acc_sniper_base {
         ACE_ScopeHeightAboveRail = 2.4;
     };
     class rhsusf_acc_LEUPOLDMK4_2: rhsusf_acc_sniper_base {
         ACE_ScopeHeightAboveRail = 3.8;
-        class ItemInfo: InventoryOpticsItem_Base_F {
-            class OpticsModes {
-                class pso1_scope {
-                    discreteDistance[] = {100};
-                    discreteDistanceInitIndex = 0;
-                };
-            };
-        };
+        
     };
     class rhsusf_acc_LEUPOLDMK4_2_d: rhsusf_acc_LEUPOLDMK4_2 {
         ACE_ScopeHeightAboveRail = 3.8;
     };
     class rhsusf_acc_premier: rhsusf_acc_LEUPOLDMK4_2 {
         ACE_ScopeHeightAboveRail = 5.4;
-        class ItemInfo: InventoryOpticsItem_Base_F {
-            class OpticsModes {
-                class pso1_scope {
-                    discreteDistance[] = {100};
-                    discreteDistanceInitIndex = 0;
-                };
-            };
-        };
+        
     };
     class rhsusf_acc_premier_low: rhsusf_acc_premier {
         ACE_ScopeHeightAboveRail = 4.0;
     };
     class rhsusf_acc_premier_anpvs27: rhsusf_acc_premier {
         ACE_ScopeHeightAboveRail = 5.4;
-        class ItemInfo: InventoryOpticsItem_Base_F {
-            class OpticsModes {
-                class pso1_nvg {
-                    discreteDistance[] = {100};
-                    discreteDistanceInitIndex = 0;
-                };
-            };
-        };
+        
     };
     class rhsusf_acc_M8541: rhsusf_acc_premier { // http://www.schmidtundbender.de/en/products/police-and-military-forces/3-12x50-pm-iilpmtc.html
         ACE_ScopeHeightAboveRail = 4.0;
@@ -200,14 +172,7 @@ class CfgWeapons {
         ACE_ScopeAdjust_Horizontal[] = {-6, 6};
         ACE_ScopeAdjust_VerticalIncrement = 0.1;
         ACE_ScopeAdjust_HorizontalIncrement = 0.1;
-        class ItemInfo: InventoryOpticsItem_Base_F {
-            class OpticsModes {
-                class Snip {
-                    discreteDistance[] = {100};
-                    discreteDistanceInitIndex = 0;
-                };    
-            };
-        };
+        
     };
     class rhsusf_acc_M8541_low: rhsusf_acc_M8541 {
         ACE_ScopeHeightAboveRail = 3.0;

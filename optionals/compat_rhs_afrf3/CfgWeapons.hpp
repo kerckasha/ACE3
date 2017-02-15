@@ -81,14 +81,7 @@ class CfgWeapons {
         ACE_ScopeAdjust_Horizontal[] = {-9, 9};
         ACE_ScopeAdjust_VerticalIncrement = 0.1;
         ACE_ScopeAdjust_HorizontalIncrement = 0.1;
-        class ItemInfo: InventoryOpticsItem_Base_F {
-            class OpticsModes {
-                class dedal_520 {
-                    discreteDistance[] = {100};
-                    discreteDistanceInitIndex = 0;
-                };
-            };
-        };
+        
     };
     class Launcher_Base_F;
     class rhs_weap_rpg7: Launcher_Base_F {
